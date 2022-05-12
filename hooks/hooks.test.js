@@ -1,4 +1,12 @@
-import { it, expect, beforeAll, beforeEach, afterAll, afterEach } from "vitest";
+import {
+  it,
+  expect,
+  beforeAll,
+  beforeEach,
+  afterAll,
+  afterEach,
+  describe
+} from "vitest";
 
 import { User } from "./hooks";
 
@@ -19,7 +27,9 @@ afterEach(() => {
   console.log("afterEach()");
 });
 
-it("should update the email", () => {
+// describe.concurrent()
+
+it.concurrent("should update the email", () => {
   const newTestEmail = "test2@test.com";
 
   user.updateEmail(newTestEmail);
@@ -27,7 +37,7 @@ it("should update the email", () => {
   expect(user.email).toBe(newTestEmail);
 });
 
-it("should have an email property", () => {
+it.concurrent("should have an email property", () => {
   expect(user).toHaveProperty("email");
 });
 
